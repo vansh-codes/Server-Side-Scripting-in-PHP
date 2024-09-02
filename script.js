@@ -3,8 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const baseURL = 'https://api.github.com/repos/vansh-codes/Server-Side-Scripting-in-PHP/contents';
 
     const ignoredFiles = [
-        'README.md',     // Example: ignore specific file
-        '.gitignore',
+        'README.md',     
         'index.html',
         'script.js',
         'style.css',
@@ -15,6 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
         return ignoredFiles.some(ignored => filePath.includes(ignored));
     }
 
+    function addSkeletons() {
+        for (let i = 0; i < 3; i++) {
+            const skeleton = document.createElement('div');
+            skeleton.className = 'skeleton';
+            fileList.appendChild(skeleton);
+        }
+    }
+
+    function removeSkeletons() {
+        const skeletons = document.querySelectorAll('.skeleton');
+        skeletons.forEach(skeleton => skeleton.remove());
+    }
+
     async function fetchDirectoryContents(path = '') {
         const url = `${baseURL}/${path}`;
         const response = await fetch(url);
@@ -22,17 +34,22 @@ document.addEventListener("DOMContentLoaded", () => {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        removeSkeletons();
 
         for (const item of data) {
             const fullPath = item.path;
             if (shouldIgnoreFile(fullPath)) {
-                continue;  // Skip the file if it matches the ignored pattern
+                continue;  // Skip the file if it matches files mentioned in ignoredFiles array
             }
 
             if (item.type === 'dir') {
                 // If item is a directory, recursively fetch its contents
                 await fetchDirectoryContents(fullPath);
             } else if (item.type === 'file') {
+                const skeleton = document.querySelector('.skeleton');
+                if (skeleton) {
+                    skeleton.remove();
+                }
                 // If item is a file, add it to the file list with the full path as its name
                 const openButton = document.createElement('button');
                 openButton.textContent = fullPath + ' - Open';
@@ -45,49 +62,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    addSkeletons();
+
     // Start fetching from the root directory
     fetchDirectoryContents().catch(error => {
         console.error('Error:', error);
         fileList.innerHTML = '<p>Failed to load files. Please try again later.</p>';
     });
 
-    /* fetch('https://api.github.com/repos/vansh-codes/Server-Side-Scripting-in-PHP/contents')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            // Remove skeletons
-            fileList.innerHTML = '';
-            console.log(data);
-
-            if (Array.isArray(data)) {
-                const filesToIgnore = ['README.md']; // Replace with actual file names
-
-                data.forEach(file => {
-                    const fileName = file.name;
-
-                    if (filesToIgnore.includes(fileName)) {
-                        return; // Skip this file
-                    }
-
-                    const fileURL = file.html_url;
-                    const openButton = document.createElement('button');
-                    openButton.textContent = fileName + ' - Open';
-                    openButton.addEventListener('click', () => {
-                        window.open(fileURL);
-                    });
-                    fileList.appendChild(openButton);
-                    fileList.appendChild(document.createElement('br'));
-                });
-            } else {
-                console.error('Error: Expected an array but received:', data);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            fileList.innerHTML = '<p>Failed to load files. Please try again later.</p>';
-        }); */
 });
