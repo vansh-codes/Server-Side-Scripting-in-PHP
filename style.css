@@ -35,10 +35,26 @@ main {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
+    max-width: 1200px;
     width: 100%;
-    margin: 20px;
+    margin: 10px;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 6px;
+}
+
+@media (max-width: 768px) {
+    #file-list {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .skeleton {
+        width: 80%; /* Adjust the width for smaller screens */
+        margin-bottom: 20px;
+    }
 }
 
 button {
