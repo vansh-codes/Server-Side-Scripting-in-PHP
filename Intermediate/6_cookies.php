@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
 </head>
 
+<!-- Small files stored on user's browser -->
+
 <body>
     <h1 style="text-align: center;">Cookies</h1>
     <?php
