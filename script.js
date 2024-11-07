@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
         'index.html',
         'script.js',
         'style.css',
-        'favicon.png'
+        'favicon.png',
+        'renameDir.sh',
+        '.gitignore'
     ];
 
     function shouldIgnoreFile(filePath) {
