@@ -57,47 +57,64 @@
     }
     echo "<br>";
     $res = array(
-            array("Manoj", 7.8, "Pass"),
-            array("Aditya", 3.4, "Fail"),
-            array("Rahul", 8.9, "Pass"),
-            array("Rohit", 9.2, "Pass")
-        );
-    
-    for($row = 0; $row < 4; $row++){
+        array("Manoj", 7.8, "Pass"),
+        array("Aditya", 3.4, "Fail"),
+        array("Rahul", 8.9, "Pass"),
+        array("Rohit", 9.2, "Pass")
+    );
+
+    for ($row = 0; $row < 4; $row++) {
         echo "<p><b>Row number $row</b></p>";
         echo "<ul>";
-        foreach($res[$row] as $ress){
+        foreach ($res[$row] as $ress) {
             echo "<li>" . $ress . "</li>";
         }
         echo "</ul>";
     }
     echo "<br>";
-    $emp = array((101)=>"Rahul", (102)=>"Rohit", (103)=>"Aditya", (104)=>"Manoj");
+    $emp = array((101) => "Rahul", (102) => "Rohit", (103) => "Aditya", (104) => "Manoj");
     echo "<pre>";
     print_r($emp);  // print_r() is used to print the human-readable information about a variable
     echo "</pre>";
     echo "<br>2D traversal using foreach loop";
-    $books = array("C++"=>array("name" => "Beginning with C++", "author" => "E.Balagurusamy", "price" => 450),
-                    "Java"=>array("name" => "Java Programming", "author" => "Herbert Schildt", "price" => 500),
-                    "Python"=>array("name" => "Python Programming", "author" => "Guido van Rossum", "price" => 600)
-            );
+    $books = array(
+        "C++" => array("name" => "Beginning with C++", "author" => "E.Balagurusamy", "price" => 450),
+        "Java" => array("name" => "Java Programming", "author" => "Herbert Schildt", "price" => 500),
+        "Python" => array("name" => "Python Programming", "author" => "Guido van Rossum", "price" => 600)
+    );
     $keys = array_keys($books);
-    for($i = 0;$i<count($books);$i++){
+    for ($i = 0; $i < count($books); $i++) {
         echo "<h4>" . $keys[$i] . "</h4>";
-        foreach($books[$keys[$i]] as $key => $value){
+        foreach ($books[$keys[$i]] as $key => $value) {
             echo $key . " : " . $value . "<br>";
         }
         // echo "<br>";
     }
-    echo "<br>2D traversal using for loop(ERROR needs to be fixed)";
-    for($i=0; $i <count($books); $i++){
-        for($j=0; $j<count($books[$keys[$i]]); $j++){
-            echo $books[$keys[$i]][$keys[$j]] . "<br>";
+    echo "<br>2D traversal using for loop<br>";
+    $data = [
+        "first" => ["name" => "John", "age" => 25, "city" => "New York"],
+        "second" => ["name" => "Alice", "age" => 30, "city" => "Los Angeles"],
+        "third" => ["name" => "Bob", "age" => 35, "city" => "Chicago"]
+    ];
+
+    $outerKeys = array_keys($data);
+
+    for ($i = 0; $i < count($data); $i++) {
+        $outerKey = $outerKeys[$i];
+        echo "Key: " . $outerKey . "<br>";
+        $innerKeys = array_keys($data[$outerKey]);
+
+        for ($j = 0; $j < count($data[$outerKey]); $j++) {
+            $innerKey = $innerKeys[$j];
+            $value = $data[$outerKey][$innerKey];
+            echo $innerKey . ": " . $value . "<br>";
         }
+        echo "<hr>";
     }
 
+    var_dump($books); // var_dump() is used to display structured information (type and value) about one or more variables
 
-?>
+    ?>
 </body>
 
 </html>

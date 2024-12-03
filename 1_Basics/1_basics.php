@@ -7,6 +7,15 @@ $c = $a + $b;
 $d = $a * $b;
 echo "Addition of a and b is: $c<br>";
 echo "Multiplication of a and b is: $d<br>";
+
+$globalVar = "I am a global variable";
+
+function accessGlobalVar() {
+    global $globalVar;  // GLOBAL also works
+    echo "Accessing global variable inside function: $globalVar<br>";
+}
+
+accessGlobalVar();
 ?>
 
 <!-- Variable naming conventions in PHP -->

@@ -5,3 +5,5 @@ if (count($_COOKIE) > 0) {
 } else {
     echo "Cookies are disabled.";
 }
+echo "<br>";
+print_r($_COOKIE);

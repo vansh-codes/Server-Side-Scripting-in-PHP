@@ -44,8 +44,10 @@
     <?php
     if (isset($_POST['name'])) {
         echo "Hello, " . $_POST['name'];
-    } else if (isset($_POST['age'])) {
+        echo "<br>";
         echo "Your age is " . $_POST['age'];
+    } else {
+        echo "Fill the name field";
     }
     ?>
 </body>

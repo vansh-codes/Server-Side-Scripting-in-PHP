@@ -29,6 +29,7 @@ Here are the key PHP superglobals:
       ```php
         echo $_SERVER['HTTP_USER_AGENT']; // Shows browser information
         echo $_SERVER['REQUEST_METHOD'];  // Shows the request method (GET, POST, etc.)
+        echo $_SERVER['PHP_SELF']         // Shows filename of the currently executing script
    ```
    
 

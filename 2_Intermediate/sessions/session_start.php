@@ -1,6 +1,5 @@
 <?php
-    session_start();
-    $_SESSION["username"]="Shashank";
-    $_SESSION["category"]="Basketball";
-    echo "We have saved your session";
-?>
+session_start();
+$_SESSION["username"] = "Vansh";
+$_SESSION["category"] = "Chess";
+echo "We have saved your session";

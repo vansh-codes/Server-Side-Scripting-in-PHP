@@ -16,8 +16,15 @@
     );
 
     $filters = array(
-        "username" => 'FILTER_SANITIZE_STRING',
-        "age" => array("filter" => FILTER_VALIDATE_INT, "options" => array("min_range" => 1, "max_range" => 100)),
+        "username" => FILTER_SANITIZE_STRING,
+        "age" => array(
+            "filter" => FILTER_VALIDATE_INT,
+            "options" => array(
+                "min_range" => 1,
+                "max_range" => 100,
+                "default" => "Age must be between 1 and 100"
+            )
+        ),
         "email" => FILTER_VALIDATE_EMAIL
     );
 

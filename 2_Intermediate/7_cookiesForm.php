@@ -31,7 +31,7 @@
             echo "Cookie '" . $cookie . "' is set!<br>";
         }
         
-        if(isset($_POST['del'])){
+        if(isset($_POST['del']) && !empty($_POST['del'])){
             $cookie1 = $_POST['user'];
             setcookie($cookie1, "", time() - 3600, "/");
             echo "Cookie '" . $cookie1 . "' is deleted!<br>";

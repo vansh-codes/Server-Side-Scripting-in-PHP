@@ -41,10 +41,12 @@
         <input type="submit" value="Submit">
     </form>
     <?php
-    if (isset($_GET['name'])) {
+    if (isset($_GET['name']) && isset($_GET['age']) && !empty($_GET['name']) && !empty($_GET['age'])) {
         echo "Hello, " . $_GET['name'];
-    } else if (isset($_GET['age'])) {
+        echo "<br>";
         echo "Your age is " . $_GET['age'];
+    } else {
+        echo "Fill the name field";
     }
     ?>
 </body>
