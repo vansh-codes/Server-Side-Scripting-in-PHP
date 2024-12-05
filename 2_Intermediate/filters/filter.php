@@ -14,26 +14,26 @@
     $newstr = filter_var($str, FILTER_SANITIZE_STRING);
     echo $newstr;
     echo "<br>";
-    
+
     echo "Validate an integer:<br>";
     $int = 100;
-    
+
     if (filter_var($int, FILTER_VALIDATE_INT)) {
         echo "Integer is valid";
     } else {
         echo "Integer is not valid";
     }
-    
+
     echo "<br>";
     echo "filter_var() and Problem With 0<br>";
     $int = 0;
-    
+
     if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($int, FILTER_VALIDATE_INT) === false) {
         echo "Integer is valid";
     } else {
         echo "Integer is not valid";
     }
-    
+
     echo "<br>";
     echo "Validate an IP Address<br>";
 
@@ -73,6 +73,14 @@
     } else {
         echo "$url is not a valid URL";
     }
+
+    echo "<br>";
+
+    // Sanitize a string using filter functions
+    $dirtyString = "<script>alert('XSS attack');</script>";
+    $cleanString = filter_var($dirtyString, FILTER_SANITIZE_STRING);
+    // Display the sanitized string
+    echo "Sanitized string: " . $cleanString;
 
     echo "<br>";
     ?>

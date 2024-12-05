@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 echo "Connected successfully";
 
-$sql = "CREATE TABLE `practice1` . `viaphp` (
+$sql = "CREATE TABLE `practice2` . `viaphp` (
     `id` INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     `address` VARCHAR(30) NOT NULL,
     `marks` INT(6) NOT NULL )";

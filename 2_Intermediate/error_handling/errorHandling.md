@@ -18,11 +18,20 @@ if (!file_exists($file)) {
 In the above example, if the file `example.txt` does not exist, the script execution will be terminated, and the error message "The file 'example.txt' does not exist." will be displayed.
 
 It is important to note that the `die` function is equivalent to the `exit` function in PHP. Both functions serve the same purpose of terminating the script execution and displaying an error message.
-
+ 
 
 A custom error handler allows you to handle errors and exceptions in a way that suits your application's needs.
 
 To define a custom error handler in PHP, you can use the `set_error_handler` function. This function takes a callback function as its parameter, which will be called whenever an error occurs. The callback function should accept four parameters: the error level, the error message, the file where the error occurred, and the line number.
+
+| Parameter | Description                                                                                   |
+|-----------|-----------------------------------------------------------------------------------------------|
+| **error_level** | Required. Specifies the error report level for the user-defined error. Must be a numeric value. |
+| **error_message** | Required. Specifies the error message for the user-defined error.                              |
+| **error_file**    | Optional. Specifies the filename in which the error occurred.                                  |
+| **error_line**    | Optional. Specifies the line number in which the error occurred.                               |
+| **error_context** | Optional. Specifies an array containing every variable and their values in use when the error occurred. |
+
 
 Here is an example of defining a custom error handler:
 

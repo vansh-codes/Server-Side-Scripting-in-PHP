@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <a class="nav-link" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"    >Contact Us</a>
+                    <a class="nav-link" href="#">Contact Us</a>
                 </li>
 
             </ul>
@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $sql = "SELECT * FROM notes";
                 $result = mysqli_query($conn, $sql);
                 $sno = 0;
-                while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_array($result)) {
                     $sno = $sno + 1;
                     echo "<tr>
 <th scope='row'>" . $sno . "</th>

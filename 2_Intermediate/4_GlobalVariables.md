@@ -19,7 +19,7 @@ Here are the key PHP superglobals:
       ```
    
 
-3. `$_REQUEST`: A combination of $_GET, $_POST, and $_COOKIE data.
+3. `$_REQUEST`: A combination of `$_GET`, `$_POST`, and `$_COOKIE` data.
       ```php
       echo $_REQUEST['email']; // Can retrieve from GET, POST, or cookies
       ```
